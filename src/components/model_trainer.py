@@ -13,6 +13,7 @@ from sklearn.metrics import r2_score
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn.tree import DecisionTreeRegressor
 from xgboost import XGBRegressor
+from sklearn.linear_model import Ridge
 
 from src.exception import CustomException
 from src.logger import logging
@@ -42,6 +43,7 @@ class ModelTrainer:
                 "Decision Tree": DecisionTreeRegressor(),
                 "Gradient Boosting": GradientBoostingRegressor(),
                 "Linear Regression": LinearRegression(),
+                "Ridge Regression": Ridge(),
                 "XGBRegressor": XGBRegressor(),
                 "CatBoosting Regressor": CatBoostRegressor(verbose=False),
                 "AdaBoost Regressor": AdaBoostRegressor(),
@@ -67,6 +69,9 @@ class ModelTrainer:
                     'n_estimators': [8,16,32,64,128,256]
                 },
                 "Linear Regression":{},
+                "Ridge Regression": {
+                    "alpha": [0.01, 0.1, 1.0, 10.0, 100.0]
+                },
                 "XGBRegressor":{
                     'learning_rate':[.1,.01,.05,.001],
                     'n_estimators': [8,16,32,64,128,256]
@@ -109,6 +114,8 @@ class ModelTrainer:
             predicted=best_model.predict(X_test)
 
             r2_square = r2_score(y_test, predicted)
+            print(f"✅ Final Model Used: {best_model_name}")
+            print(f"✅ R² Score of Final Model: {r2_square}")
             return r2_square
             
 
