@@ -18,7 +18,8 @@ This project is designed to predict the **Math score** of students using various
 
 The pipeline includes **data preprocessing, exploratory data analysis (EDA), model selection with GridSearchCV**, and deployment using **Flask** and **Docker**.
 
-📚 Dataset: Kaggle - Student Performance in Exams
+📚 Dataset: [Kaggle - Student Performance in Exams](https://www.kaggle.com/datasets/spscientist/students-performance-in-exams)
+
 
 ---
 ## 🚀 Features
